@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "apiVersion": "2018-02-01",
+      "name": "webapp198",  
+      "type": "Microsoft.Web/sites",
+      "kind": "app",
+      "location": "East US", 
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', 'webapp')]"
+      ],
+      "properties": {
+        "name": "webapp198",  
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'webapp)]"
+      }
+    },
+    {
+      "apiVersion": "2018-02-01",
+      "name": "webapp",  
+      "type": "Microsoft.Web/serverfarms",
+      "location": "East US",  
+      "sku": {
+        "family": "F",
+        "name": "YourSku", 
+        "capacity": 1
+      }
+    }
+  ]
+}
